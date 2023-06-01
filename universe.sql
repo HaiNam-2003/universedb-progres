@@ -266,6 +266,9 @@ ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.st
 -- Data for Name: blackhole; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.blackhole VALUES (1, 2000, false, 'blackhole1');
+INSERT INTO public.blackhole VALUES (2, 2000, false, 'blackhole2');
+INSERT INTO public.blackhole VALUES (3, 2000, false, 'blackhole3');
 
 
 --
@@ -342,7 +345,7 @@ INSERT INTO public.star VALUES (6, 120192, 'star 6', 'black', 1);
 -- Name: blackhole_blackhole_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.blackhole_blackhole_id_seq', 1, false);
+SELECT pg_catalog.setval('public.blackhole_blackhole_id_seq', 3, true);
 
 
 --
@@ -374,6 +377,14 @@ SELECT pg_catalog.setval('public.star_star_id_seq', 6, true);
 
 
 --
+-- Name: blackhole blackhole_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.blackhole
+    ADD CONSTRAINT blackhole_name_key UNIQUE (name);
+
+
+--
 -- Name: blackhole blackhole_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
@@ -387,6 +398,14 @@ ALTER TABLE ONLY public.blackhole
 
 ALTER TABLE ONLY public.galaxy
     ADD CONSTRAINT galaxy_pkey PRIMARY KEY (galaxy_id);
+
+
+--
+-- Name: galaxy galaxy_speed_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.galaxy
+    ADD CONSTRAINT galaxy_speed_key UNIQUE (speed);
 
 
 --
@@ -406,11 +425,27 @@ ALTER TABLE ONLY public.moon
 
 
 --
+-- Name: planet planet_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.planet
+    ADD CONSTRAINT planet_name_key UNIQUE (name);
+
+
+--
 -- Name: planet planet_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.planet
     ADD CONSTRAINT planet_pkey PRIMARY KEY (planet_id);
+
+
+--
+-- Name: star star_color_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.star
+    ADD CONSTRAINT star_color_key UNIQUE (color);
 
 
 --
